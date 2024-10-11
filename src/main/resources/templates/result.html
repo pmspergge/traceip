@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Resultado de la IP</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        p, ul {
+            font-size: 16px;
+            color: #555;
+        }
+        .highlight {
+            font-weight: bold;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Resultado de la Dirección IP</h1>
+    <p><span class="highlight">IP:</span> <span th:text="${ip}"></span></p>
+    <p><span class="highlight">Fecha y Hora Actual:</span> <span th:text="${formattedCurrentDate}"></span></p>
+
+    <p><span class="highlight">País:</span> <span th:text="${countryName}"></span> (<span th:text="${isoCode}"></span>)</p>
+    <p><span class="highlight">Coordenadas:</span> ( <span th:text="${#numbers.formatDecimal(latitude, 0, 0)}"></span>, <span th:text="${#numbers.formatDecimal(longitude, 0, 0)}"></span> ) </p>
+
+    <p><span class="highlight">Idiomas Oficiales:</span></p>
+    <ul>
+        <li th:each="language : ${languages}" th:text="${language}"></li>
+    </ul>
+
+    <p>
+        <span class="highlight">Hora(s) Actual(es) en el País:</span>
+    </p>
+    <ul>
+        <li th:each="time : ${currentTimes}" th:text="${time}"></li>
+    </ul>
+
+    <p>
+        <span class="highlight">Moneda:</span> <span th:text="${currency.name}">
+        </span> (Símbolo: <span th:text="${currency.symbol}"></span>)
+    </p>
+    <p>
+        <span class="highlight">Cotización de 1 <span th:text="${currencyCode}"></span> a USD:</span>
+        <span th:text="${#numbers.formatDecimal(localToUsdRate, 1, 2)}"></span>
+    </p>
+    <p>
+        <span class="highlight">Cotización de 1 <span th:text="${currencyCode}"></span> a ARS:</span>
+        <span th:text="${#numbers.formatDecimal(localToArsRate, 0, 2)}"></span>
+    </p>
+    <p>
+        <span class="highlight">Distancia estimada a Buenos Aires:</span>
+        <span th:text="${#numbers.formatDecimal(distanceToBA, 0, 0)}"></span> km (-34, -58) a (<span th:text="${#numbers.formatDecimal(latitude, 0, 0)}"></span>, <span th:text="${#numbers.formatDecimal(longitude, 0, 0)}"></span>)
+    </p>
+</div>
+</body>
+</html>

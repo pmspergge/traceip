@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Estadísticas de Consultas de IP</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        p {
+            font-size: 16px;
+            color: #555;
+        }
+        .highlight {
+            font-weight: bold;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Estadísticas de Consultas de IP</h1>
+    <p><span class="highlight">Distancia máxima:</span> <span th:text="${#numbers.formatDecimal(maxDistance, 0, 0)}"></span> km</p>
+    <p><span class="highlight">Distancia mínima:</span> <span th:text="${#numbers.formatDecimal(minDistance, 0, 0)}"></span> km</p>
+    <p><span class="highlight">Distancia promedio:</span> <span th:text="${#numbers.formatDecimal(avgDistance, 0, 0)}"></span> km</p>
+</div>
+</body>
+</html>

@@ -45,16 +45,29 @@
         button:hover {
             background-color: #0056b3;
         }
+        .error {
+            color: red;
+            font-weight: bold;
+            text-align: center;
+        }
+        .back-button {
+            background-color: #6c757d;
+        }
+        .back-button:hover {
+            background-color: #5a6268;
+        }
     </style>
 </head>
 <body>
 <div class="container">
     <h1>Formulario de Dirección IP</h1>
-    <form action="/api/trace" method="post">
+    <form action="/trace" method="post">
         <label for="ip">Dirección IP:</label>
         <input type="text" id="ip" name="ip" placeholder="Ingrese la dirección IP">
         <button type="submit">Enviar</button>
+        <p th:if="${error}" class="error" th:text="${error}"></p>
     </form>
+    <a href="/"><button type="button" class="back-button">Volver a la página principal</button></a>
 </div>
 </body>
 </html>

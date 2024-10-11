@@ -30,6 +30,20 @@
             font-weight: bold;
             color: #000;
         }
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
@@ -57,7 +71,7 @@
         <span class="highlight">Moneda:</span> <span th:text="${currency.name}">
         </span> (Símbolo: <span th:text="${currency.symbol}"></span>)
     </p>
-    <p>
+    <p th:if="${currencyCode != 'USD'}">
         <span class="highlight">Cotización de 1 <span th:text="${currencyCode}"></span> a USD:</span>
         <span th:text="${#numbers.formatDecimal(localToUsdRate, 1, 2)}"></span>
     </p>
@@ -69,6 +83,8 @@
         <span class="highlight">Distancia estimada a Buenos Aires:</span>
         <span th:text="${#numbers.formatDecimal(distanceToBA, 0, 0)}"></span> km (-34, -58) a (<span th:text="${#numbers.formatDecimal(latitude, 0, 0)}"></span>, <span th:text="${#numbers.formatDecimal(longitude, 0, 0)}"></span>)
     </p>
+    <a href="/statistics" class="btn">Ver Estadísticas</a>
+    <a href="/form" class="btn">Volver</a>
 </div>
 </body>
 </html>

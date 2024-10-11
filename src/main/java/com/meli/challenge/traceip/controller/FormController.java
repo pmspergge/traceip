@@ -14,7 +14,7 @@ import com.meli.challenge.traceip.dto.CurrencyInfoDTO;
 import com.meli.challenge.traceip.dto.IpInfoDTO;
 
 @Controller
-@RequestMapping("/api")
+@RequestMapping("/")
 public class FormController {
 
     private final TraceIpService traceIpService;
@@ -61,16 +61,17 @@ public class FormController {
         model.addAttribute("currency", countryInfo.getCurrencies().values().stream().findFirst().orElse(null));
         model.addAttribute("currencyCode", ipInfo.getCurrencyCode());
 
-        if (currencyInfo.getConversionRateToUSD() != null) {
-            model.addAttribute("localToUsdRate", String.format("%.2f", currencyInfo.getConversionRateToUSD()));
-        } else {
-            model.addAttribute("localToUsdRate", "No disponible");
+        if (!"USD".equals(ipInfo.getCurrencyCode())) {
+            if (currencyInfo.getConversionRateToUSD() != null) {
+                model.addAttribute("localToUsdRate", String.format("%.2f", currencyInfo.getConversionRateToUSD()));
+            } else {
+                model.addAttribute("localToUsdRate", 0);
+            }
         }
-
         if (currencyInfo.getConversionRateToARS() != null) {
             model.addAttribute("localToArsRate", String.format("%.2f", currencyInfo.getConversionRateToARS()));
         } else {
-            model.addAttribute("localToArsRate", "No disponible");
+            model.addAttribute("localToArsRate", 0);
         }
 
         model.addAttribute("distanceToBA", ipInfo.getDistanceToBA());

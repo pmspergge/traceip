@@ -24,3 +24,17 @@ Aplicación que, dado una dirección IP, proporciona información sobre:
 ```bash
 git clone https://github.com/pmspergge/traceip.git
 cd traceip
+```
+
+### Construir y Ejecutar con Docker Compose
+
+```bash
+docker-compose up --build
+```
+
+### Acceder a la Aplicación:
+- Página principal: http://localhost:8080/
+- Formulario de búsqueda: http://localhost:8080/form
+- Resultado de búsqueda de dirección IP: http://localhost:8080/form/trace
+- Estadísticas: http://localhost:8080/api/statistics
+

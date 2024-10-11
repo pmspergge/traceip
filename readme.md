@@ -22,5 +22,5 @@ Aplicación que, dado una dirección IP, proporciona información sobre:
 ### Clonar el Repositorio
 
 ```bash
-git clone https://github.com/tu_usuario/traceip.git
+git clone https://github.com/pmspergge/traceip.git
 cd traceip
